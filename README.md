@@ -2,6 +2,12 @@
 
 Bot de pedidos para lanchonete pelo WhatsApp em que um LLM decide o fluxo: um roteador escolhe o agente (saudação, cardápio, carrinho, endereço, pagamento) e cada agente conversa e chama ferramentas tipadas para mexer no pedido. Inclui agrupamento de mensagens picadas, transbordo para atendimento humano e um endpoint para testar sem a API da Meta.
 
+![Conversa de pedido no WhatsApp: mensagens picadas agrupadas, carrinho, endereço e cobrança PIX](docs/prints/bot-pedidos-whatsapp-llm.png)
+
+![Painel da cozinha com as comandas por etapa e o registro do agente e da ferramenta escolhidos pelo roteador LLM](docs/prints/bot-pedidos-whatsapp-llm-painel.png)
+
+*Dados fictícios. O painel é um desenho de como a cozinha acompanharia os pedidos e o que o roteador decidiu; o repositório ainda não tem front.*
+
 ## Por que existe
 
 Pequeno negócio que vende pelo WhatsApp perde pedido por demora e bagunça na conversa. A ideia foi testar um desenho LLM-first: o código cuida de estado, persistência e regras; o texto e a escolha do próximo passo ficam com o modelo, guiados por prompts com objetivo, políticas e exemplos.
