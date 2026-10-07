@@ -1,9 +1,9 @@
 
 [project]
-name = "hamburgueria-bot-adk-wpp"
+name = "bot-pedidos-whatsapp-llm"
 version = "0.1.0"
 description = "Bot de pedidos para hamburgueria via WhatsApp Cloud API — MVP hexagonal com LiteLLM"
-authors = [{name="ADK"}]
+authors = [{name="Vinicius Candido"}]
 requires-python = ">=3.11"
 dependencies = [
     "Flask>=3.0.0",
@@ -15,6 +15,7 @@ dependencies = [
     "structlog>=24.1.0",
     "kink>=0.7.0",
     "alembic>=1.13.1",
+    "Jinja2>=3.1.0",
 ]
 
 [tool.ruff]

@@ -6,7 +6,7 @@ from kink import di
 from ..core.di import bootstrap_di
 from ..core.logging import set_trace_id, get_logger
 from ..core.guardrails import sanitize_text
-    from ..core.catalog import load_catalog, flatten_for_prompt
+from ..core.catalog import load_catalog, flatten_for_prompt
 from ..core.settings import Settings
 from ..repo import repo
 from ..core.coalesce import coalesce_window
@@ -18,12 +18,14 @@ bootstrap_di()
 log = get_logger()
 
 @app.post("/admin/reload-config")
-    def reload_config():
-        di["catalog"] = load_catalog()
-        di["catalog_text"] = flatten_for_prompt(di["catalog"], max_items=200)
-        return {"ok": True, "items_count": sum(len(c.get('items',[])) for c in di['catalog'].get('categories',[]))}
+def reload_config():
+    """Recarrega o catálogo do disco e atualiza o resumo injetado nos prompts."""
+    di["catalog"] = load_catalog()
+    di["catalog_text"] = flatten_for_prompt(di["catalog"], max_items=200)
+    return {"ok": True, "items_count": sum(len(c.get('items',[])) for c in di['catalog'].get('categories',[]))}
 
-    @app.get("/healthz")
+
+@app.get("/healthz")
 def healthz():
     """Health check básico."""
     return {"ok": True}
@@ -148,3 +150,7 @@ def simulate():
 
     # Em simulate NÃO enfileiramos; apenas devolvemos a resposta prevista
     return jsonify({"preview": response_dict, "agent": rot.agente_escolhido, "window_msgs": len(pacote["message_ids"]) })
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)

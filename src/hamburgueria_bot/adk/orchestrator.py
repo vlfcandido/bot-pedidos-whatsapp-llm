@@ -34,7 +34,7 @@ class Orchestrator:
             })
         conversa = last_messages(contexto.get("wa_id",""), limit=5)
         catalog_text = di.get("catalog_text", "")
-            system = self.builder.router_system(contexto=contexto | {"catalog_text": catalog_text}, agentes=agentes, conversa=conversa)
+        system = self.builder.router_system(contexto=contexto | {"catalog_text": catalog_text}, agentes=agentes, conversa=conversa)
         user = f"Mensagem atual do cliente: {mensagem}\nRetorne preferencialmente JSON no schema acordado."
         try:
             out = self.llm.complete_json(system, user, RouterOutput)
