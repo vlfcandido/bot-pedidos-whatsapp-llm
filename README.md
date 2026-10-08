@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/marca/cabecalho-escuro.svg">
+  <img alt="bot-pedidos-whatsapp-llm" src="docs/marca/cabecalho-claro.svg" width="100%">
+</picture>
+
 # bot-pedidos-whatsapp-llm
 
 Bot de pedidos para lanchonete pelo WhatsApp em que um LLM decide o fluxo: um roteador escolhe o agente (saudação, cardápio, carrinho, endereço, pagamento) e cada agente conversa e chama ferramentas tipadas para mexer no pedido. Inclui agrupamento de mensagens picadas, transbordo para atendimento humano e um endpoint para testar sem a API da Meta.
